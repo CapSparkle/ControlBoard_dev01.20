@@ -34,9 +34,7 @@ Uint16 cooling = 1;
 Uint16 cooling_mode = 0;
 Uint16 cooling_level = 0;
 
-//
-Uint16 additional_param = 3;
-//
+int32 temp_bf_delta = 0; //_IQ16(1);
 
 APFILTER3 temp1f;
 APFILTER3 temp2f;
@@ -238,6 +236,7 @@ static void TempControl(void)
 
 #if CALC_BF_TEMP
     data = TEMP_BF;
+    //data = (int16)_IQ16mpy(data, temp_bf_gain);
     if (data < 100) bf_flag = 1;
     else if (data <= tsensX[0]) temp2 = tsensY[0];
     else if (data >= tsensX[TSENS_NUM_POINTS-1]) temp2 = tsensY[TSENS_NUM_POINTS-1];
@@ -259,6 +258,17 @@ static void TempControl(void)
 
     temp_cpu = (int16)_IQrsmpy(temp1f.Output, TEMP_MAX);
     temp_bf  = !bf_flag ? (int16)_IQrsmpy(temp2f.Output, TEMP_MAX) : 9999;
+
+    temp_bf = temp_bf + temp_bf_delta;
+
+    if(temp_bf > TEMP_MAX){
+        temp_bf = TEMP_MAX;
+    }
+    else {
+        if(temp_bf < -100){
+            temp_bf = -100;
+        }
+    }
 
     state = (netType != 3);
     if (spi_enable != state)

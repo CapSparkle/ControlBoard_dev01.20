@@ -38,8 +38,7 @@ extern int16  cool_off;
 extern Uint16 cooling;
 extern Uint16 cooling_mode;
 extern Uint16 cooling_level;
-
-extern Uint16 additional_param;
+extern int32 temp_bf_delta;
 
 void InterfaceInit(void);
 void InterfaceUpdate(void);

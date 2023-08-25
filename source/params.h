@@ -129,6 +129,7 @@ param_t params[] =
 /*113*/ (void *)&cooling,               FLAG_EDIT|FLAG_NVM,
 /*114*/ (void *)&cooling_mode,          FLAG_EDIT|FLAG_NVM,
 /*115*/ (void *)&cooling_level,         FLAG_EDIT|FLAG_NVM,
+/*116*/ (void *)&temp_bf_delta,         FLAG_EDIT|FLAG_NVM,
 };
 
 #define TSENS_NUM_POINTS    5
