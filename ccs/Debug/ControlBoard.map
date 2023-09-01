@@ -1,7 +1,7 @@
 ******************************************************************************
              TMS320C2000 Linker PC v22.6.0                     
 ******************************************************************************
->> Linked Fri Aug 25 17:35:07 2023
+>> Linked Fri Sep  1 12:32:25 2023
 
 OUTPUT FILE NAME:   <ControlBoard.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 003f4be3
@@ -14,7 +14,7 @@ MEMORY CONFIGURATION
 PAGE 0:
   PRAML0                00008000   00000800  0000001f  000007e1  RWIX
   OTP                   003d7800   00000400  00000000  00000400  RWIX
-  FLASH                 003f4000   00003f80  00001bc2  000023be  RWIX
+  FLASH                 003f4000   00003f80  00001bd9  000023a7  RWIX
   CSM_RSVD              003f7f80   00000076  00000000  00000076  RWIX
   BEGIN                 003f7ff6   00000002  00000002  00000000  RWIX
   CSM_PWL_P0            003f7ff8   00000008  00000000  00000008  RWIX
@@ -66,18 +66,19 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.cinit     0    003f5af3    000000cf     
-                  003f5af3    00000071     interface.obj (.cinit)
-                  003f5b64    00000010     f2802x_i2c.obj (.cinit)
-                  003f5b74    0000000e     lir_da158a_02.obj (.cinit)
-                  003f5b82    0000000e     rts2800_ml.lib : exit.c.obj (.cinit)
-                  003f5b90    0000000c     ads1256.obj (.cinit)
-                  003f5b9c    0000000a     system_init.obj (.cinit)
-                  003f5ba6    00000008     interface.obj (.cinit:_tsensX)
-                  003f5bae    00000008     netcomm.obj (.cinit)
-                  003f5bb6    00000005     rts2800_ml.lib : _lock.c.obj (.cinit:__lock)
-                  003f5bbb    00000005                    : _lock.c.obj (.cinit:__unlock)
-                  003f5bc0    00000002     --HOLE-- [fill = 0]
+.cinit     0    003f5b02    000000d7     
+                  003f5b02    00000071     interface.obj (.cinit)
+                  003f5b73    00000010     f2802x_i2c.obj (.cinit)
+                  003f5b83    0000000e     lir_da158a_02.obj (.cinit)
+                  003f5b91    0000000e     rts2800_ml.lib : exit.c.obj (.cinit)
+                  003f5b9f    0000000c     ads1256.obj (.cinit)
+                  003f5bab    0000000a     system_init.obj (.cinit)
+                  003f5bb5    00000008     interface.obj (.cinit:_tsensX)
+                  003f5bbd    00000008     interface.obj (.cinit:_tsensY)
+                  003f5bc5    00000008     netcomm.obj (.cinit)
+                  003f5bcd    00000005     rts2800_ml.lib : _lock.c.obj (.cinit:__lock)
+                  003f5bd2    00000005                    : _lock.c.obj (.cinit:__unlock)
+                  003f5bd7    00000002     --HOLE-- [fill = 0]
 
 .pinit     0    003f4000    00000000     UNINITIALIZED
 
@@ -238,32 +239,31 @@ codestart
                   00008aa4    00000006     lir_da158a_02.obj (.ebss)
                   00008aaa    00000006     rts2800_ml.lib : exit.c.obj (.ebss)
                   00008ab0    00000005     interface.obj (.ebss:_tsensX)
-                  00008ab5    00000004     f2802x_i2c.obj (.ebss)
-                  00008ab9    00000001     ads1256.obj (.ebss:_ads1256_chan)
-                  00008aba    00000004     system_init.obj (.ebss)
+                  00008ab5    00000005     interface.obj (.ebss:_tsensY)
+                  00008aba    00000004     f2802x_i2c.obj (.ebss)
                   00008abe    00000002     rts2800_ml.lib : _lock.c.obj (.ebss:__lock)
                   00008ac0    00000118     interface.obj (.ebss:_adc_values)
-                  00008bd8    00000003     ads1256.obj (.ebss)
-                  00008bdb    00000001     --HOLE--
-                  00008bdc    00000002     rts2800_ml.lib : _lock.c.obj (.ebss:__unlock)
-                  00008bde    00000022     --HOLE--
+                  00008bd8    00000004     system_init.obj (.ebss)
+                  00008bdc    00000003     ads1256.obj (.ebss)
+                  00008bdf    00000001     ads1256.obj (.ebss:_ads1256_chan)
+                  00008be0    00000002     rts2800_ml.lib : _lock.c.obj (.ebss:__unlock)
+                  00008be2    0000001e     --HOLE--
                   00008c00    00000096     interface.obj (.ebss)
                   00008c96    0000002a     --HOLE--
                   00008cc0    00000058     interface.obj (.ebss:_adc_f)
 
-.econst    0    003f55a2    000003d9     
-                  003f55a2    000001d4     interface.obj (.econst:_params)
-                  003f5776    00000100     f2802x_pievect.obj (.econst:_PieVectTableInit)
-                  003f5876    00000100     netcrc.obj (.econst:_crc16_table)
-                  003f5976    00000005     interface.obj (.econst:_tsensY)
+.econst    0    003f55a2    000003e8     
+                  003f55a2    000001e8     interface.obj (.econst:_params)
+                  003f578a    00000100     f2802x_pievect.obj (.econst:_PieVectTableInit)
+                  003f588a    00000100     netcrc.obj (.econst:_crc16_table)
 
-IQmath     0    003f597b    00000178     
-                  003f597b    00000047     IQmath.lib : IQ16div.obj (IQmath)
-                  003f59c2    00000047                : IQ1div.obj (IQmath)
-                  003f5a09    00000047                : IQ22div.obj (IQmath)
-                  003f5a50    00000047                : IQ24div.obj (IQmath)
-                  003f5a97    00000047                : IQ30div.obj (IQmath)
-                  003f5ade    00000015                : IQ24rsmpy.obj (IQmath)
+IQmath     0    003f598a    00000178     
+                  003f598a    00000047     IQmath.lib : IQ16div.obj (IQmath)
+                  003f59d1    00000047                : IQ1div.obj (IQmath)
+                  003f5a18    00000047                : IQ22div.obj (IQmath)
+                  003f5a5f    00000047                : IQ24div.obj (IQmath)
+                  003f5aa6    00000047                : IQ30div.obj (IQmath)
+                  003f5aed    00000015                : IQ24rsmpy.obj (IQmath)
 
 IQmathTables 
 *          0    003fe000    00000b50     NOLOAD SECTION
@@ -443,12 +443,12 @@ MODULE SUMMARY
        Total:                          0      0                  1022              
                                                                                    
     .\source\
-       interface.obj                   1194   594                523               
+       interface.obj                   1194   617                528               
        system_init.obj                 242    10                 4                 
        ApFilter3.obj                   186    0                  0                 
        main.obj                        15     0                  0                 
     +--+-------------------------------+------+------------------+--------------------+
-       Total:                          1637   604                527               
+       Total:                          1637   627                532               
                                                                                    
     ../../lib/IQmath.lib
        IQmathTables.obj                0      2896               0                 
@@ -480,7 +480,7 @@ MODULE SUMMARY
                                                                                    
        Stack:                          0      0                  944               
     +--+-------------------------------+------+------------------+--------------------+
-       Grand Total:                    5571   4462               3193              
+       Grand Total:                    5571   4485               3198              
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -555,20 +555,21 @@ address     data page           name
 00008aac     22a (00008a80)     ___TI_cleanup_ptr
 00008aae     22a (00008a80)     ___TI_dtors_ptr
 00008ab0     22a (00008a80)     _tsensX
-00008ab5     22a (00008a80)     _i2c_msg_counter
-00008ab6     22a (00008a80)     _i2c_al_counter
-00008ab7     22a (00008a80)     _i2c_nack_counter
-00008ab8     22a (00008a80)     _i2c_buserr_counter
-00008ab9     22a (00008a80)     _ads1256_chan
-00008aba     22a (00008a80)     _system_time
+00008ab5     22a (00008a80)     _tsensY
+00008aba     22a (00008a80)     _i2c_msg_counter
+00008abb     22a (00008a80)     _i2c_al_counter
+00008abc     22a (00008a80)     _i2c_nack_counter
+00008abd     22a (00008a80)     _i2c_buserr_counter
 00008abe     22a (00008a80)     __lock
 
 00008ac0     22b (00008ac0)     _adc_values
 
-00008bd8     22f (00008bc0)     _ads1256_num
-00008bd9     22f (00008bc0)     _ads1256_status
-00008bda     22f (00008bc0)     _ads1256_error
-00008bdc     22f (00008bc0)     __unlock
+00008bd8     22f (00008bc0)     _system_time
+00008bdc     22f (00008bc0)     _ads1256_num
+00008bdd     22f (00008bc0)     _ads1256_status
+00008bde     22f (00008bc0)     _ads1256_error
+00008bdf     22f (00008bc0)     _ads1256_chan
+00008be0     22f (00008bc0)     __unlock
 
 00008c00     230 (00008c00)     _dev_number
 00008c01     230 (00008c00)     _wr_flag
@@ -608,20 +609,19 @@ address     data page           name
 
 003f55a2    fd56 (003f5580)     _params
 
-003f5776    fd5d (003f5740)     _PieVectTableInit
+003f578a    fd5e (003f5780)     _PieVectTableInit
 
-003f5976    fd65 (003f5940)     _tsensY
-003f597b    fd65 (003f5940)     __IQ16div
+003f598a    fd66 (003f5980)     __IQ16div
 
-003f59c2    fd67 (003f59c0)     __IQ1div
+003f59d1    fd67 (003f59c0)     __IQ1div
 
-003f5a09    fd68 (003f5a00)     __IQ22div
+003f5a18    fd68 (003f5a00)     __IQ22div
 
-003f5a50    fd69 (003f5a40)     __IQ24div
+003f5a5f    fd69 (003f5a40)     __IQ24div
 
-003f5a97    fd6a (003f5a80)     __IQ30div
+003f5aa6    fd6a (003f5a80)     __IQ30div
 
-003f5ade    fd6b (003f5ac0)     __IQ24rsmpy
+003f5aed    fd6b (003f5ac0)     __IQ24rsmpy
 
 003f7ff8    fdff (003f7fc0)     _CsmPwl
 
@@ -846,7 +846,7 @@ page  address   name
 1     003d7fff  _PartIdRegs                     
 1     00000ce0  _PieCtrlRegs                    
 1     00000d00  _PieVectTable                   
-0     003f5776  _PieVectTableInit               
+0     003f578a  _PieVectTableInit               
 0     003f550d  _RTOSINT_ISR                    
 0     003f55a2  _RamfuncsLoadEnd                
 abs   0000001f  _RamfuncsLoadSize               
@@ -886,12 +886,12 @@ abs   0000001f  _RamfuncsLoadSize
 0     003f5576  _XINT3_ISR                      
 1     00007070  _XIntruptRegs                   
 0     003f528a  _XtalOscSel                     
-0     003f597b  __IQ16div                       
-0     003f59c2  __IQ1div                        
-0     003f5a09  __IQ22div                       
-0     003f5a50  __IQ24div                       
-0     003f5ade  __IQ24rsmpy                     
-0     003f5a97  __IQ30div                       
+0     003f598a  __IQ16div                       
+0     003f59d1  __IQ1div                        
+0     003f5a18  __IQ22div                       
+0     003f5a5f  __IQ24div                       
+0     003f5aed  __IQ24rsmpy                     
+0     003f5aa6  __IQ30div                       
 1     00000400  __STACK_END                     
 abs   000003b0  __STACK_SIZE                    
 1     00008aac  ___TI_cleanup_ptr               
@@ -902,7 +902,7 @@ abs   ffffffff  ___TI_prof_data_size
 abs   ffffffff  ___TI_prof_data_start           
 abs   ffffffff  ___binit__                      
 abs   ffffffff  ___c_args__                     
-0     003f5af3  ___cinit__                      
+0     003f5b02  ___cinit__                      
 0     003f5583  ___etext__                      
 abs   ffffffff  ___pinit__                      
 0     003f4000  ___text__                       
@@ -914,16 +914,16 @@ abs   ffffffff  ___pinit__
 1     00000050  __stack                         
 0     003f5582  __system_post_cinit             
 0     003f5580  __system_pre_init               
-1     00008bdc  __unlock                        
+1     00008be0  __unlock                        
 0     003f5011  _abort                          
 1     00008cc0  _adc_f                          
 1     00008c1a  _adc_tf                         
 1     00008ac0  _adc_values                     
-1     00008ab9  _ads1256_chan                   
+1     00008bdf  _ads1256_chan                   
 1     00008a86  _ads1256_data                   
-1     00008bda  _ads1256_error                  
-1     00008bd8  _ads1256_num                    
-1     00008bd9  _ads1256_status                 
+1     00008bde  _ads1256_error                  
+1     00008bdc  _ads1256_num                    
+1     00008bdd  _ads1256_status                 
 0     003f52f4  _async_unwrap_char              
 0     003f4ccb  _async_wrap                     
 0     003f4be3  _c_int00                        
@@ -943,10 +943,10 @@ abs   ffffffff  ___pinit__
 1     00008c0c  _heating_level                  
 1     00008c0b  _heating_mode                   
 1     00008c18  _heating_timer                  
-1     00008ab6  _i2c_al_counter                 
-1     00008ab8  _i2c_buserr_counter             
-1     00008ab5  _i2c_msg_counter                
-1     00008ab7  _i2c_nack_counter               
+1     00008abb  _i2c_al_counter                 
+1     00008abd  _i2c_buserr_counter             
+1     00008aba  _i2c_msg_counter                
+1     00008abc  _i2c_nack_counter               
 1     00008c16  _lir_angle                      
 1     00008aa4  _lir_num_bits                   
 1     00008aa8  _lir_offset                     
@@ -960,7 +960,7 @@ abs   ffffffff  ___pinit__
 0     003f557b  _rsvd_ISR                       
 1     00008840  _rx_buf                         
 1     00008c02  _spi_enable                     
-1     00008aba  _system_time                    
+1     00008bd8  _system_time                    
 1     00008c40  _temp1f                         
 1     00008c56  _temp2f                         
 1     00008c05  _temp_bf                        
@@ -969,13 +969,13 @@ abs   ffffffff  ___pinit__
 1     00008c07  _temp_off                       
 1     00008c06  _temp_on                        
 1     00008ab0  _tsensX                         
-0     003f5976  _tsensY                         
+1     00008ab5  _tsensY                         
 1     00008980  _tx_buf                         
 1     00008c0e  _upd_freq                       
 1     00008c08  _user_temp                      
 1     00008c01  _wr_flag                        
 abs   ffffffff  binit                           
-0     003f5af3  cinit                           
+0     003f5b02  cinit                           
 0     003f7ff6  code_start                      
 0     003f5583  etext                           
 abs   ffffffff  pinit                           
@@ -1114,16 +1114,15 @@ page  address   name
 0     003f5583  etext                           
 0     003f55a2  _RamfuncsLoadEnd                
 0     003f55a2  _params                         
-0     003f5776  _PieVectTableInit               
-0     003f5976  _tsensY                         
-0     003f597b  __IQ16div                       
-0     003f59c2  __IQ1div                        
-0     003f5a09  __IQ22div                       
-0     003f5a50  __IQ24div                       
-0     003f5a97  __IQ30div                       
-0     003f5ade  __IQ24rsmpy                     
-0     003f5af3  ___cinit__                      
-0     003f5af3  cinit                           
+0     003f578a  _PieVectTableInit               
+0     003f598a  __IQ16div                       
+0     003f59d1  __IQ1div                        
+0     003f5a18  __IQ22div                       
+0     003f5a5f  __IQ24div                       
+0     003f5aa6  __IQ30div                       
+0     003f5aed  __IQ24rsmpy                     
+0     003f5b02  ___cinit__                      
+0     003f5b02  cinit                           
 0     003f7ff6  code_start                      
 0     003fe000  _IQsinTable                     
 0     003fe100  _IQcosTable                     
@@ -1218,18 +1217,19 @@ page  address   name
 1     00008aac  ___TI_cleanup_ptr               
 1     00008aae  ___TI_dtors_ptr                 
 1     00008ab0  _tsensX                         
-1     00008ab5  _i2c_msg_counter                
-1     00008ab6  _i2c_al_counter                 
-1     00008ab7  _i2c_nack_counter               
-1     00008ab8  _i2c_buserr_counter             
-1     00008ab9  _ads1256_chan                   
-1     00008aba  _system_time                    
+1     00008ab5  _tsensY                         
+1     00008aba  _i2c_msg_counter                
+1     00008abb  _i2c_al_counter                 
+1     00008abc  _i2c_nack_counter               
+1     00008abd  _i2c_buserr_counter             
 1     00008abe  __lock                          
 1     00008ac0  _adc_values                     
-1     00008bd8  _ads1256_num                    
-1     00008bd9  _ads1256_status                 
-1     00008bda  _ads1256_error                  
-1     00008bdc  __unlock                        
+1     00008bd8  _system_time                    
+1     00008bdc  _ads1256_num                    
+1     00008bdd  _ads1256_status                 
+1     00008bde  _ads1256_error                  
+1     00008bdf  _ads1256_chan                   
+1     00008be0  __unlock                        
 1     00008c00  _dev_number                     
 1     00008c01  _wr_flag                        
 1     00008c02  _spi_enable                     

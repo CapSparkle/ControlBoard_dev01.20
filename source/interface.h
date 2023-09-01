@@ -32,6 +32,7 @@ extern Uint32 system_time;
 extern adc_value_t adc_values[ADC_NUM_CHANS];
 extern APFILTER3 adc_f[ADC_NUM_CHANS];
 extern int16 tsensX[];
+extern int16 tsensY[];
 
 extern int16  cool_on;
 extern int16  cool_off;

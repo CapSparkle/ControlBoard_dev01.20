@@ -43,6 +43,7 @@ adc_value_t adc_values[ADC_NUM_CHANS];
 APFILTER3 adc_f[ADC_NUM_CHANS];
 
 int16 tsensX[TSENS_NUM_POINTS] = { 1043, 1429, 1816, 2176, 2551 };
+int16 tsensY[TSENS_NUM_POINTS] = { -100, -50, 0, 50, 100 };
 
 struct I2CMSG I2cMsg;
 

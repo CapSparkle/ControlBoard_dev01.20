@@ -130,10 +130,15 @@ param_t params[] =
 /*114*/ (void *)&cooling_mode,          FLAG_EDIT|FLAG_NVM,
 /*115*/ (void *)&cooling_level,         FLAG_EDIT|FLAG_NVM,
 /*116*/ (void *)&temp_bf_delta,         FLAG_EDIT|FLAG_NVM,
+/*117*/ (void *)&tsensY[0],             FLAG_EDIT|FLAG_NVM,
+/*118*/ (void *)&tsensY[1],             FLAG_EDIT|FLAG_NVM,
+/*119*/ (void *)&tsensY[2],             FLAG_EDIT|FLAG_NVM,
+/*120*/ (void *)&tsensY[3],             FLAG_EDIT|FLAG_NVM,
+/*121*/ (void *)&tsensY[4],             FLAG_EDIT|FLAG_NVM,
 };
 
 #define TSENS_NUM_POINTS    5
-const int16 tsensY[] = { -100, -50, 0, 50, 100 };
+
 
 #endif // __PARAMS_H__
 
