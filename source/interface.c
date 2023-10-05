@@ -11,6 +11,7 @@
 #define HEATING_SIGNAL_PERIOD    100UL //60000UL = 1 min
 
 #define COOLING_SIGNAL_PERIOD_10MICROSEC    100000000UL // 1UL = 10 microsecs; 100'000UL = 1'000'000 microsecs = 1 sec
+#define COOLING_DUTY_STEP_PERIOD            100UL
 
 Uint16 dev_number = 0;
 Uint16 wr_flag = 0;
@@ -39,7 +40,7 @@ Uint16 cooling_level = 0;
 
 Uint32 cooling_timer_10microsec = 0;
 
-Uint16 current_cooling_level = 0;
+Uint16 current_cooling_power = 0;
 
 
 int32 temp_bf_delta = 0; //_IQ16(1);
@@ -139,10 +140,12 @@ void InterfaceUpdate(void)
         timer += UPD_TIME;
     }
 
-    if((system_time_10micros - timer_10microsec) > UPD_TIME_10MICROSEC){
-        TempTimer10Microsec(UPD_TIME_10MICROSEC);
-        timer_10microsec += UPD_TIME_10MICROSEC;
-    }
+    if((system_time_10micros - timer_10microsec) > UPD_TIME_10MICROSEC)
+    {
+       TempTimer10Microsec(UPD_TIME_10MICROSEC);
+       timer_10microsec += UPD_TIME_10MICROSEC;
+
+      CoolingControl();
 }
 
 Uint16 ReadReg(Uint16 index, Uint32 *data)
@@ -338,42 +341,101 @@ static void TempControl(void)
         if (temp_cpu <= 10) PODOGREV_INT = 0;
         if (temp_cpu >= 20) PODOGREV_INT = 1;
     }
+}
 
+static void CoolingControl(void)
+{
     if(PODOGREV == 0)
     {
-        OHLAZHDENIE = 1;
+        CoolingDown();
         return;
     }
 
     switch(netType)
     {
-        case 1:
-        case 2:
-            if (!cooling) OHLAZHDENIE = 1;
-            //else OHLAZHDENIE = TempInput();
-            break;
-        case 3:
-            if (!cooling) OHLAZHDENIE = 1;
-            else
-            {
-                if (temp_bf >= cool_on)  OHLAZHDENIE = 0;
-                if (temp_bf <= cool_off) OHLAZHDENIE = 1;
+      case 1:
+      case 2:
+          if (!cooling)
+          {
+              CoolingDown();
+          }
+          //else OHLAZHDENIE = TempInput();
+          break;
+      case 3:
+          if (!cooling)
+          {
+              CoolingDown();
+          }
+          else
+          {
+              if (temp_bf >= cool_on) {
+                  CoolingUp();
+              }
+              if (temp_bf <= cool_off){
+                  CoolingDown();
+              }
+          }
+          //HEAT_OUT = OHLAZHDENIE;
+          break;
+      default:
+        if (!cooling){
+            CoolingDown();
+        }
+        else if (!cooling_mode)
+        {
+            if (temp_bf >= cool_on) {
+                CoolingUp();
             }
-            //HEAT_OUT = OHLAZHDENIE;
-            break;
-        default:
-            if (!cooling) OHLAZHDENIE = 1;
-            else if (!cooling_mode)
-            {
-                if (temp_bf >= cool_on)  OHLAZHDENIE = 0;
-                if (temp_bf <= cool_off) OHLAZHDENIE = 1;
+            if (temp_bf <= cool_off) {
+                CoolingDown();
             }
-            else
-            {
-                if (temp_bf <= 30) OHLAZHDENIE = 1;
-                else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(cooling_level, 100), COOLING_SIGNAL_PERIOD_10MICROSEC)) OHLAZHDENIE = 0;
-                else OHLAZHDENIE = 1;
+        }
+        else
+        {
+            if (temp_bf <= 30) {
+                CoolingDown();
             }
+            else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(cooling_level, 100), COOLING_SIGNAL_PERIOD_10MICROSEC)){
+                CoolingUp();
+            }
+            else {
+                CoolingDown();
+            }
+        }
+    }
+
+    Cooling();
+}
+
+
+
+/*
+ int16  cool_on = 50;
+int16  cool_off = 30;
+Uint16 cooling = 1;
+Uint16 cooling_mode = 0;
+Uint16 cooling_level = 0;
+
+Uint32 cooling_timer_10microsec = 0;
+
+Uint16 current_cooling_power = 0;
+ */
+
+static void Cooling(){
+    auto small_period_value = cooling_timer_10microsec % COOLING_DUTY_STEP_PERIOD;
+    if(small_period_value <= _IQmpy(_IQdiv(current_cooling_power, 100), COOLING_DUTY_STEP_PERIOD)) OHLAZHDENIE = 0;
+    else OHLAZHDENIE = 1;
+}
+
+static void CoolingUp(){
+    if(current_cooling_power < 100){
+        current_cooling_power += 5;
+    }
+}
+
+static void CoolingDown(){
+    if(current_cooling_power > 0){
+        current_cooling_power -= 5;
     }
 }
 
