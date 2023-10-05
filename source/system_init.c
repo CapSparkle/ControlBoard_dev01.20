@@ -78,9 +78,8 @@ static void InitUserGpio(void)
     GpioCtrlRegs.GPBDIR.bit.GPIO34 = 1;   // DSP_LED
     GpioDataRegs.GPBDAT.bit.GPIO34 = 0;
 
-    GpioCtrlRegs.GPADIR.bit.GPIO18 = 1;   // OHLAZHDENIE
-    GpioDataRegs.GPADAT.bit.GPIO18 = 1;
-
+    GpioCtrlRegs.GPADIR.bit.GPIO13 = 1;   // OHLAZHDENIE
+    GpioDataRegs.GPADAT.bit.GPIO13 = 1;
 	EDIS;
 }
 

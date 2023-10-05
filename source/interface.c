@@ -34,7 +34,7 @@ int32  adc_tf = 0;
 int16  cool_on = 50;
 int16  cool_off = 30;
 Uint16 cooling = 1;
-Uint16 cooling_mode = 0;
+Uint16 cooling_mode = 1;
 Uint16 cooling_level = 0;
 
 Uint32 cooling_timer_10microsec = 0;
@@ -239,7 +239,7 @@ static void TempTimer(Uint16 TimeMs)
 static void TempTimer10Microsec(Uint16 tenMicrosec)
 {
     cooling_timer_10microsec += tenMicrosec;
-    if (cooling_timer_10microsec > COOLING_SIGNAL_PERIOD_10MICROSEC) cooling_timer_10microsec -= COOLING_SIGNAL_PERIOD_10MICROSEC;
+    if (cooling_timer_10microsec > 100) cooling_timer_10microsec -= 100;
 }
 
 static void TempControl(void)
@@ -349,11 +349,11 @@ static void TempControl(void)
     {
         case 1:
         case 2:
-            if (!cooling) OHLAZHDENIE = 1;
+            if (false) OHLAZHDENIE = 1;
             //else OHLAZHDENIE = TempInput();
             break;
         case 3:
-            if (!cooling) OHLAZHDENIE = 1;
+            if (false) OHLAZHDENIE = 1;
             else
             {
                 if (temp_bf >= cool_on)  OHLAZHDENIE = 0;
@@ -362,8 +362,8 @@ static void TempControl(void)
             //HEAT_OUT = OHLAZHDENIE;
             break;
         default:
-            if (!cooling) OHLAZHDENIE = 1;
-            else if (!cooling_mode)
+            if (false) OHLAZHDENIE = 1;
+            else if (false)
             {
                 if (temp_bf >= cool_on)  OHLAZHDENIE = 0;
                 if (temp_bf <= cool_off) OHLAZHDENIE = 1;
@@ -371,8 +371,12 @@ static void TempControl(void)
             else
             {
                 if (temp_bf <= 30) OHLAZHDENIE = 1;
-                else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(cooling_level, 100), COOLING_SIGNAL_PERIOD_10MICROSEC)) OHLAZHDENIE = 0;
-                else OHLAZHDENIE = 1;
+                else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(50, 100), 100)) {
+                    OHLAZHDENIE = 0;
+                }
+                else {
+                    OHLAZHDENIE = 1;
+                }
             }
     }
 }
