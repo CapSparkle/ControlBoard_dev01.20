@@ -10,8 +10,7 @@
 #define UPD_TIME_10MICROSEC      5UL
 #define HEATING_SIGNAL_PERIOD    100UL //60000UL = 1 min
 
-#define COOLING_SIGNAL_PERIOD_10MICROSEC    100UL // 1UL = 10 microsecs
-#define COOLING_SIGNAL_MACRO_PERIOD = 100000UL
+#define COOLING_SIGNAL_PERIOD_10MICROSEC    100000000UL // 1UL = 10 microsecs; 100'000UL = 1'000'000 microsecs = 1 sec
 
 Uint16 dev_number = 0;
 Uint16 wr_flag = 0;
