@@ -84,6 +84,7 @@ struct I2CMSG {
 };
 
 extern Uint32 system_time;
+extern Uint32 system_time_10micros;
 #define millis()            system_time
 #define timerElapsed(timer) (system_time - (timer))
 extern void SystemTickUpdate(void);

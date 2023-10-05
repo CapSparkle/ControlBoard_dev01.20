@@ -78,6 +78,9 @@ static void InitUserGpio(void)
     GpioCtrlRegs.GPBDIR.bit.GPIO34 = 1;   // DSP_LED
     GpioDataRegs.GPBDAT.bit.GPIO34 = 0;
 
+    GpioCtrlRegs.GPADIR.bit.GPIO18 = 1;   // OHLAZHDENIE
+    GpioDataRegs.GPADAT.bit.GPIO18 = 1;
+
 	EDIS;
 }
 
@@ -125,8 +128,10 @@ void SystemTickUpdate(void)
     if (delta >= SYS_PERIOD_10MICROS)
     {
         delta = _IQ1div(delta, SYS_PERIOD_10MICROS) >> 1;
-        system_time += delta;
+        system_time_10micros += delta;
         lastTime -= delta * SYS_PERIOD_10MICROS;
+
+        system_time = system_time_10micros / 100;
     }
 }
 

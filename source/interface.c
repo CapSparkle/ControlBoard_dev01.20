@@ -7,8 +7,11 @@
 #include "params.h"
 
 #define UPD_TIME        (Uint16)(1000 / UPD_FREQ)
-#define HEATING_SIGNAL_PERIOD    100UL //60000UL // 1 min
-#define COOLING_SIGNAL_PERIOD    100UL //60000UL // 1 min
+#define UPD_TIME_10MICROSEC      5UL
+#define HEATING_SIGNAL_PERIOD    100UL //60000UL = 1 min
+
+#define COOLING_SIGNAL_PERIOD_10MICROSEC    100UL // 1UL = 10 microsecs
+#define COOLING_SIGNAL_MACRO_PERIOD = 100000UL
 
 Uint16 dev_number = 0;
 Uint16 wr_flag = 0;
@@ -35,7 +38,10 @@ Uint16 cooling = 1;
 Uint16 cooling_mode = 0;
 Uint16 cooling_level = 0;
 
+Uint32 cooling_timer_10microsec = 0;
+
 Uint16 current_cooling_level = 0;
+
 
 int32 temp_bf_delta = 0; //_IQ16(1);
 
@@ -57,6 +63,7 @@ static void ReadParams(void);
 static void WriteParams(void);
 static void LedBlink(Uint16 TimeMs);
 static void TempTimer(Uint16 TimeMs);
+static void TempTimer10Microsec(Uint16 tenMicrosec);
 static void TempControl(void);
 static void AdcInterp(adc_value_t *v, int32 x, Uint16 numPts);
 static void UpdateSensors(void);
@@ -106,6 +113,7 @@ void InterfaceUpdate(void)
 {
     static Uint16 i2c_index = 0;
     static Uint32 timer = 0;
+    static Uint32 timer_10microsec = 0;
 
     WriteParams();
     I2C_update(&I2cMsg);
@@ -130,6 +138,11 @@ void InterfaceUpdate(void)
         ApFilter3Calc(&temp1f);
         ApFilter3Calc(&temp2f);
         timer += UPD_TIME;
+    }
+
+    if((system_time_10micros - timer_10microsec) > UPD_TIME_10MICROSEC){
+        TempTimer10Microsec(UPD_TIME_10MICROSEC);
+        timer_10microsec += UPD_TIME_10MICROSEC;
     }
 }
 
@@ -222,6 +235,12 @@ static void TempTimer(Uint16 TimeMs)
 {
     heating_timer += TimeMs;
     if (heating_timer > HEATING_SIGNAL_PERIOD) heating_timer -= HEATING_SIGNAL_PERIOD;
+}
+
+static void TempTimer10Microsec(Uint16 tenMicrosec)
+{
+    cooling_timer_10microsec += tenMicrosec;
+    if (cooling_timer_10microsec > COOLING_SIGNAL_PERIOD_10MICROSEC) cooling_timer_10microsec -= COOLING_SIGNAL_PERIOD_10MICROSEC;
 }
 
 static void TempControl(void)
@@ -319,6 +338,43 @@ static void TempControl(void)
     {
         if (temp_cpu <= 10) PODOGREV_INT = 0;
         if (temp_cpu >= 20) PODOGREV_INT = 1;
+    }
+
+    if(PODOGREV == 0)
+    {
+        OHLAZHDENIE = 1;
+        return;
+    }
+
+    switch(netType)
+    {
+        case 1:
+        case 2:
+            if (!cooling) OHLAZHDENIE = 1;
+            //else OHLAZHDENIE = TempInput();
+            break;
+        case 3:
+            if (!cooling) OHLAZHDENIE = 1;
+            else
+            {
+                if (temp_bf >= cool_on)  OHLAZHDENIE = 0;
+                if (temp_bf <= cool_off) OHLAZHDENIE = 1;
+            }
+            //HEAT_OUT = OHLAZHDENIE;
+            break;
+        default:
+            if (!cooling) OHLAZHDENIE = 1;
+            else if (!cooling_mode)
+            {
+                if (temp_bf >= cool_on)  OHLAZHDENIE = 0;
+                if (temp_bf <= cool_off) OHLAZHDENIE = 1;
+            }
+            else
+            {
+                if (temp_bf <= 30) OHLAZHDENIE = 1;
+                else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(cooling_level, 100), COOLING_SIGNAL_PERIOD_10MICROSEC)) OHLAZHDENIE = 0;
+                else OHLAZHDENIE = 1;
+            }
     }
 }
 

@@ -26,6 +26,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>NewTargetConfiguration.ccxml</name>
+			<type>1</type>
+			<location>C:/Users/Fesko/ti/CCSTargetConfigurations/NewTargetConfiguration.ccxml</location>
+		</link>
+		<link>
 			<name>drivers</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
