@@ -1,6 +1,6 @@
 # FIXED
 
-drivers/ads1256.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/ads1256.c
+drivers/ads1256.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/ads1256.c
 drivers/ads1256.obj: ../../f2802x_common/include/DSP28x_Project.h
 drivers/ads1256.obj: ../../f2802x_headers/include/F2802x_Device.h
 drivers/ads1256.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/assert.h
@@ -37,11 +37,11 @@ drivers/ads1256.obj: ../../f2802x_common/include/f2802x_examples.h
 drivers/ads1256.obj: ../../f2802x_common/include/f2802x_globalprototypes.h
 drivers/ads1256.obj: ../../f2802x_common/include/f2802x_epwm_defines.h
 drivers/ads1256.obj: ../../f2802x_common/include/f2802x_defaultisr.h
-drivers/ads1256.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/ads1256.h
+drivers/ads1256.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/ads1256.h
 drivers/ads1256.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/string.h
 drivers/ads1256.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/xlocale/_string.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/ads1256.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/ads1256.c:
 
 ../../f2802x_common/include/DSP28x_Project.h:
 
@@ -115,7 +115,7 @@ C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h:
 
 ../../f2802x_common/include/f2802x_defaultisr.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/ads1256.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/ads1256.h:
 
 C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/string.h:
 

@@ -1,6 +1,6 @@
 # FIXED
 
-drivers/drv_at24x.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/drv_at24x.c
+drivers/drv_at24x.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/drv_at24x.c
 drivers/drv_at24x.obj: ../../f2802x_common/include/DSP28x_Project.h
 drivers/drv_at24x.obj: ../../f2802x_headers/include/F2802x_Device.h
 drivers/drv_at24x.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/assert.h
@@ -37,9 +37,9 @@ drivers/drv_at24x.obj: ../../f2802x_common/include/f2802x_examples.h
 drivers/drv_at24x.obj: ../../f2802x_common/include/f2802x_globalprototypes.h
 drivers/drv_at24x.obj: ../../f2802x_common/include/f2802x_epwm_defines.h
 drivers/drv_at24x.obj: ../../f2802x_common/include/f2802x_defaultisr.h
-drivers/drv_at24x.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/drv_at24x.h
+drivers/drv_at24x.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/drv_at24x.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/drv_at24x.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/drv_at24x.c:
 
 ../../f2802x_common/include/DSP28x_Project.h:
 
@@ -113,5 +113,5 @@ C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h:
 
 ../../f2802x_common/include/f2802x_defaultisr.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/drv_at24x.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/drv_at24x.h:
 

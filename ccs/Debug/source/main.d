@@ -1,7 +1,7 @@
 # FIXED
 
-source/main.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/main.c
-source/main.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/config.h
+source/main.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/main.c
+source/main.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/config.h
 source/main.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdlib.h
 source/main.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h
 source/main.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h
@@ -45,15 +45,15 @@ source/main.obj: ../../f2802x_common/include/f2802x_examples.h
 source/main.obj: ../../f2802x_common/include/f2802x_globalprototypes.h
 source/main.obj: ../../f2802x_common/include/f2802x_epwm_defines.h
 source/main.obj: ../../f2802x_common/include/f2802x_defaultisr.h
-source/main.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/IQmathLib.h
+source/main.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/IQmathLib.h
 source/main.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/limits.h
-source/main.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/ApFilter3.h
-source/main.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/interface.h
+source/main.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/ApFilter3.h
+source/main.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/interface.h
 source/main.obj: ../../drivers/netcomm.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/main.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/main.c:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/config.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/config.h:
 
 C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/stdlib.h:
 
@@ -141,13 +141,13 @@ C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h:
 
 ../../f2802x_common/include/f2802x_defaultisr.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/IQmathLib.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/IQmathLib.h:
 
 C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/limits.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/ApFilter3.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/ApFilter3.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/source/interface.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/source/interface.h:
 
 ../../drivers/netcomm.h:
 

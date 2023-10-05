@@ -1,6 +1,6 @@
 # FIXED
 
-f2802x_common/f2802x_pievect.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c
+f2802x_common/f2802x_pievect.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c
 f2802x_common/f2802x_pievect.obj: ../../f2802x_headers/include/F2802x_Device.h
 f2802x_common/f2802x_pievect.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/assert.h
 f2802x_common/f2802x_pievect.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h
@@ -37,7 +37,7 @@ f2802x_common/f2802x_pievect.obj: ../../f2802x_common/include/f2802x_globalproto
 f2802x_common/f2802x_pievect.obj: ../../f2802x_common/include/f2802x_epwm_defines.h
 f2802x_common/f2802x_pievect.obj: ../../f2802x_common/include/f2802x_defaultisr.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c:
 
 ../../f2802x_headers/include/F2802x_Device.h:
 

@@ -1,7 +1,7 @@
 ******************************************************************************
              TMS320C2000 Linker PC v22.6.0                     
 ******************************************************************************
->> Linked Fri Sep  1 12:32:25 2023
+>> Linked Thu Oct  5 12:02:48 2023
 
 OUTPUT FILE NAME:   <ControlBoard.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 003f4be3
@@ -14,7 +14,7 @@ MEMORY CONFIGURATION
 PAGE 0:
   PRAML0                00008000   00000800  0000001f  000007e1  RWIX
   OTP                   003d7800   00000400  00000000  00000400  RWIX
-  FLASH                 003f4000   00003f80  00001bd9  000023a7  RWIX
+  FLASH                 003f4000   00003f80  00001bdd  000023a3  RWIX
   CSM_RSVD              003f7f80   00000076  00000000  00000076  RWIX
   BEGIN                 003f7ff6   00000002  00000002  00000000  RWIX
   CSM_PWL_P0            003f7ff8   00000008  00000000  00000008  RWIX
@@ -66,19 +66,19 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.cinit     0    003f5b02    000000d7     
-                  003f5b02    00000071     interface.obj (.cinit)
-                  003f5b73    00000010     f2802x_i2c.obj (.cinit)
-                  003f5b83    0000000e     lir_da158a_02.obj (.cinit)
-                  003f5b91    0000000e     rts2800_ml.lib : exit.c.obj (.cinit)
-                  003f5b9f    0000000c     ads1256.obj (.cinit)
-                  003f5bab    0000000a     system_init.obj (.cinit)
-                  003f5bb5    00000008     interface.obj (.cinit:_tsensX)
-                  003f5bbd    00000008     interface.obj (.cinit:_tsensY)
-                  003f5bc5    00000008     netcomm.obj (.cinit)
-                  003f5bcd    00000005     rts2800_ml.lib : _lock.c.obj (.cinit:__lock)
-                  003f5bd2    00000005                    : _lock.c.obj (.cinit:__unlock)
-                  003f5bd7    00000002     --HOLE-- [fill = 0]
+.cinit     0    003f5b02    000000db     
+                  003f5b02    00000075     interface.obj (.cinit)
+                  003f5b77    00000010     f2802x_i2c.obj (.cinit)
+                  003f5b87    0000000e     lir_da158a_02.obj (.cinit)
+                  003f5b95    0000000e     rts2800_ml.lib : exit.c.obj (.cinit)
+                  003f5ba3    0000000c     ads1256.obj (.cinit)
+                  003f5baf    0000000a     system_init.obj (.cinit)
+                  003f5bb9    00000008     interface.obj (.cinit:_tsensX)
+                  003f5bc1    00000008     interface.obj (.cinit:_tsensY)
+                  003f5bc9    00000008     netcomm.obj (.cinit)
+                  003f5bd1    00000005     rts2800_ml.lib : _lock.c.obj (.cinit:__lock)
+                  003f5bd6    00000005                    : _lock.c.obj (.cinit:__unlock)
+                  003f5bdb    00000002     --HOLE-- [fill = 0]
 
 .pinit     0    003f4000    00000000     UNINITIALIZED
 
@@ -443,12 +443,12 @@ MODULE SUMMARY
        Total:                          0      0                  1022              
                                                                                    
     .\source\
-       interface.obj                   1194   617                528               
+       interface.obj                   1194   621                528               
        system_init.obj                 242    10                 4                 
        ApFilter3.obj                   186    0                  0                 
        main.obj                        15     0                  0                 
     +--+-------------------------------+------+------------------+--------------------+
-       Total:                          1637   627                532               
+       Total:                          1637   631                532               
                                                                                    
     ../../lib/IQmath.lib
        IQmathTables.obj                0      2896               0                 
@@ -480,7 +480,7 @@ MODULE SUMMARY
                                                                                    
        Stack:                          0      0                  944               
     +--+-------------------------------+------+------------------+--------------------+
-       Grand Total:                    5571   4485               3198              
+       Grand Total:                    5571   4489               3198              
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -591,12 +591,13 @@ address     data page           name
 00008c11     230 (00008c00)     _cooling
 00008c12     230 (00008c00)     _cooling_mode
 00008c13     230 (00008c00)     _cooling_level
-00008c16     230 (00008c00)     _lir_angle
-00008c18     230 (00008c00)     _heating_timer
-00008c1a     230 (00008c00)     _adc_tf
-00008c1c     230 (00008c00)     _temp_bf_delta
-00008c20     230 (00008c00)     _Tsens
-00008c26     230 (00008c00)     _Eeprom
+00008c14     230 (00008c00)     _current_cooling_level
+00008c18     230 (00008c00)     _lir_angle
+00008c1a     230 (00008c00)     _heating_timer
+00008c1c     230 (00008c00)     _adc_tf
+00008c1e     230 (00008c00)     _temp_bf_delta
+00008c22     230 (00008c00)     _Tsens
+00008c28     230 (00008c00)     _Eeprom
 
 00008c40     231 (00008c40)     _temp1f
 00008c56     231 (00008c40)     _temp2f
@@ -751,7 +752,7 @@ page  address   name
 1     00006840  _EPwm2Regs                      
 1     00006880  _EPwm3Regs                      
 1     000068c0  _EPwm4Regs                      
-1     00008c26  _Eeprom                         
+1     00008c28  _Eeprom                         
 1     00000d01  _EmuBMode                       
 1     00000d00  _EmuKey                         
 0     003f5458  _EnableInterrupts               
@@ -866,7 +867,7 @@ abs   0000001f  _RamfuncsLoadSize
 1     00000985  _SysPwrCtrlRegs                 
 0     003f5141  _SystemTickUpdate               
 0     003f5526  _TINT0_ISR                      
-1     00008c20  _Tsens                          
+1     00008c22  _Tsens                          
 0     003f552b  _USER10_ISR                     
 0     003f5530  _USER11_ISR                     
 0     003f5535  _USER12_ISR                     
@@ -917,7 +918,7 @@ abs   ffffffff  ___pinit__
 1     00008be0  __unlock                        
 0     003f5011  _abort                          
 1     00008cc0  _adc_f                          
-1     00008c1a  _adc_tf                         
+1     00008c1c  _adc_tf                         
 1     00008ac0  _adc_values                     
 1     00008bdf  _ads1256_chan                   
 1     00008a86  _ads1256_data                   
@@ -934,6 +935,7 @@ abs   ffffffff  ___pinit__
 1     00008c13  _cooling_level                  
 1     00008c12  _cooling_mode                   
 0     003f511d  _copy_in                        
+1     00008c14  _current_cooling_level          
 1     00008c00  _dev_number                     
 1     00008c0d  _din_states                     
 1     00008c03  _enc_enable                     
@@ -942,12 +944,12 @@ abs   ffffffff  ___pinit__
 1     00008c0a  _heating_int                    
 1     00008c0c  _heating_level                  
 1     00008c0b  _heating_mode                   
-1     00008c18  _heating_timer                  
+1     00008c1a  _heating_timer                  
 1     00008abb  _i2c_al_counter                 
 1     00008abd  _i2c_buserr_counter             
 1     00008aba  _i2c_msg_counter                
 1     00008abc  _i2c_nack_counter               
-1     00008c16  _lir_angle                      
+1     00008c18  _lir_angle                      
 1     00008aa4  _lir_num_bits                   
 1     00008aa8  _lir_offset                     
 1     00008aa6  _lir_position                   
@@ -964,7 +966,7 @@ abs   ffffffff  ___pinit__
 1     00008c40  _temp1f                         
 1     00008c56  _temp2f                         
 1     00008c05  _temp_bf                        
-1     00008c1c  _temp_bf_delta                  
+1     00008c1e  _temp_bf_delta                  
 1     00008c04  _temp_cpu                       
 1     00008c07  _temp_off                       
 1     00008c06  _temp_on                        
@@ -1250,12 +1252,13 @@ page  address   name
 1     00008c11  _cooling                        
 1     00008c12  _cooling_mode                   
 1     00008c13  _cooling_level                  
-1     00008c16  _lir_angle                      
-1     00008c18  _heating_timer                  
-1     00008c1a  _adc_tf                         
-1     00008c1c  _temp_bf_delta                  
-1     00008c20  _Tsens                          
-1     00008c26  _Eeprom                         
+1     00008c14  _current_cooling_level          
+1     00008c18  _lir_angle                      
+1     00008c1a  _heating_timer                  
+1     00008c1c  _adc_tf                         
+1     00008c1e  _temp_bf_delta                  
+1     00008c22  _Tsens                          
+1     00008c28  _Eeprom                         
 1     00008c40  _temp1f                         
 1     00008c56  _temp2f                         
 1     00008c80  _I2cMsg                         
@@ -1273,4 +1276,4 @@ abs   ffffffff  ___pinit__
 abs   ffffffff  binit                           
 abs   ffffffff  pinit                           
 
-[287 symbols]
+[288 symbols]

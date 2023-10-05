@@ -2,7 +2,9 @@
 #include "config.h"
 
 #define SYS_PERIOD_MS (Uint32)(SYSCLK / 1000)
-Uint32 system_time = 0;
+#define SYS_PERIOD_10MICROS (Uint32)(SYSCLK / 100000)
+Uint32 system_time = 0; //millisecs
+Uint32 system_time_10micros = 0; //10 microsec tics
 
 static void InitUserGpio(void);
 static void InitUserAdc(void);
@@ -120,11 +122,11 @@ void SystemTickUpdate(void)
 {
     static Uint32 lastTime = -1UL;
     Uint32 delta = lastTime - ReadCpuTimer0Counter();
-    if (delta >= SYS_PERIOD_MS)
+    if (delta >= SYS_PERIOD_10MICROS)
     {
-        delta = _IQ1div(delta, SYS_PERIOD_MS) >> 1;
+        delta = _IQ1div(delta, SYS_PERIOD_10MICROS) >> 1;
         system_time += delta;
-        lastTime -= delta * SYS_PERIOD_MS;
+        lastTime -= delta * SYS_PERIOD_10MICROS;
     }
 }
 

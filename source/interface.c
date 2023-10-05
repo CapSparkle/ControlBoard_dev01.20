@@ -7,7 +7,8 @@
 #include "params.h"
 
 #define UPD_TIME        (Uint16)(1000 / UPD_FREQ)
-#define HEATING_TIME    100UL //60000UL // 1 min
+#define HEATING_SIGNAL_PERIOD    100UL //60000UL // 1 min
+#define COOLING_SIGNAL_PERIOD    100UL //60000UL // 1 min
 
 Uint16 dev_number = 0;
 Uint16 wr_flag = 0;
@@ -33,6 +34,8 @@ int16  cool_off = 30;
 Uint16 cooling = 1;
 Uint16 cooling_mode = 0;
 Uint16 cooling_level = 0;
+
+Uint16 current_cooling_level = 0;
 
 int32 temp_bf_delta = 0; //_IQ16(1);
 
@@ -218,7 +221,7 @@ static Uint16 TempInput(void)
 static void TempTimer(Uint16 TimeMs)
 {
     heating_timer += TimeMs;
-    if (heating_timer > HEATING_TIME) heating_timer -= HEATING_TIME;
+    if (heating_timer > HEATING_SIGNAL_PERIOD) heating_timer -= HEATING_SIGNAL_PERIOD;
 }
 
 static void TempControl(void)
@@ -306,7 +309,7 @@ static void TempControl(void)
             else
             {
                 if (temp_bf >= 65) PODOGREV = 1;
-                else if (heating_timer <= _IQmpy(_IQdiv(heating_level, 100), HEATING_TIME)) PODOGREV = 0;
+                else if (heating_timer <= _IQmpy(_IQdiv(heating_level, 100), HEATING_SIGNAL_PERIOD)) PODOGREV = 0;
                 else PODOGREV = 1;
             }
     }

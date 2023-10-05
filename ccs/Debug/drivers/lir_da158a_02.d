@@ -1,6 +1,6 @@
 # FIXED
 
-drivers/lir_da158a_02.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/lir_da158a_02.c
+drivers/lir_da158a_02.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/lir_da158a_02.c
 drivers/lir_da158a_02.obj: ../../f2802x_common/include/DSP28x_Project.h
 drivers/lir_da158a_02.obj: ../../f2802x_headers/include/F2802x_Device.h
 drivers/lir_da158a_02.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/assert.h
@@ -37,9 +37,9 @@ drivers/lir_da158a_02.obj: ../../f2802x_common/include/f2802x_examples.h
 drivers/lir_da158a_02.obj: ../../f2802x_common/include/f2802x_globalprototypes.h
 drivers/lir_da158a_02.obj: ../../f2802x_common/include/f2802x_epwm_defines.h
 drivers/lir_da158a_02.obj: ../../f2802x_common/include/f2802x_defaultisr.h
-drivers/lir_da158a_02.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/lir_da158a_02.h
+drivers/lir_da158a_02.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/lir_da158a_02.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/lir_da158a_02.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/lir_da158a_02.c:
 
 ../../f2802x_common/include/DSP28x_Project.h:
 
@@ -113,5 +113,5 @@ C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h:
 
 ../../f2802x_common/include/f2802x_defaultisr.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/lir_da158a_02.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/lir_da158a_02.h:
 

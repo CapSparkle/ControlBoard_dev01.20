@@ -1,6 +1,6 @@
 # FIXED
 
-drivers/adt75.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/adt75.c
+drivers/adt75.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/adt75.c
 drivers/adt75.obj: ../../f2802x_common/include/DSP28x_Project.h
 drivers/adt75.obj: ../../f2802x_headers/include/F2802x_Device.h
 drivers/adt75.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/assert.h
@@ -37,9 +37,9 @@ drivers/adt75.obj: ../../f2802x_common/include/f2802x_examples.h
 drivers/adt75.obj: ../../f2802x_common/include/f2802x_globalprototypes.h
 drivers/adt75.obj: ../../f2802x_common/include/f2802x_epwm_defines.h
 drivers/adt75.obj: ../../f2802x_common/include/f2802x_defaultisr.h
-drivers/adt75.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/adt75.h
+drivers/adt75.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/adt75.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/adt75.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/adt75.c:
 
 ../../f2802x_common/include/DSP28x_Project.h:
 
@@ -113,5 +113,5 @@ C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h:
 
 ../../f2802x_common/include/f2802x_defaultisr.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/adt75.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/adt75.h:
 

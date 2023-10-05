@@ -1,6 +1,6 @@
 # FIXED
 
-f2802x_headers/F2802x_GlobalVariableDefs.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/f2802x_headers/source/F2802x_GlobalVariableDefs.c
+f2802x_headers/F2802x_GlobalVariableDefs.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_headers/source/F2802x_GlobalVariableDefs.c
 f2802x_headers/F2802x_GlobalVariableDefs.obj: ../../f2802x_headers/include/F2802x_Device.h
 f2802x_headers/F2802x_GlobalVariableDefs.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/assert.h
 f2802x_headers/F2802x_GlobalVariableDefs.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h
@@ -33,7 +33,7 @@ f2802x_headers/F2802x_GlobalVariableDefs.obj: ../../f2802x_headers/include/F2802
 f2802x_headers/F2802x_GlobalVariableDefs.obj: ../../f2802x_headers/include/F2802x_SysCtrl.h
 f2802x_headers/F2802x_GlobalVariableDefs.obj: ../../f2802x_headers/include/F2802x_XIntrupt.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/f2802x_headers/source/F2802x_GlobalVariableDefs.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_headers/source/F2802x_GlobalVariableDefs.c:
 
 ../../f2802x_headers/include/F2802x_Device.h:
 

@@ -1,6 +1,6 @@
 # FIXED
 
-drivers/netcomm.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netcomm.c
+drivers/netcomm.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcomm.c
 drivers/netcomm.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/string.h
 drivers/netcomm.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/_ti_config.h
 drivers/netcomm.obj: C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/linkage.h
@@ -39,12 +39,12 @@ drivers/netcomm.obj: ../../f2802x_common/include/f2802x_examples.h
 drivers/netcomm.obj: ../../f2802x_common/include/f2802x_globalprototypes.h
 drivers/netcomm.obj: ../../f2802x_common/include/f2802x_epwm_defines.h
 drivers/netcomm.obj: ../../f2802x_common/include/f2802x_defaultisr.h
-drivers/netcomm.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netcomm.h
-drivers/netcomm.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netwrapper.h
-drivers/netcomm.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netcrc.h
-drivers/netcomm.obj: C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/neterrors.h
+drivers/netcomm.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcomm.h
+drivers/netcomm.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netwrapper.h
+drivers/netcomm.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcrc.h
+drivers/netcomm.obj: C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/neterrors.h
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netcomm.c:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcomm.c:
 
 C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/string.h:
 
@@ -122,11 +122,11 @@ C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include/sys/_stdint.h:
 
 ../../f2802x_common/include/f2802x_defaultisr.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netcomm.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcomm.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netwrapper.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netwrapper.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/netcrc.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcrc.h:
 
-C:/Users/Andrey\ Feskovich/Desktop/ISS/sources_30_06_23/ControlBoard_dev01.20/drivers/neterrors.h:
+C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/neterrors.h:
 
