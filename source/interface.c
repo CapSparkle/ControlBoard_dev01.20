@@ -145,7 +145,8 @@ void InterfaceUpdate(void)
        TempTimer10Microsec(UPD_TIME_10MICROSEC);
        timer_10microsec += UPD_TIME_10MICROSEC;
 
-      CoolingControl();
+       CoolingControl();
+    }
 }
 
 Uint16 ReadReg(Uint16 index, Uint32 *data)
@@ -348,6 +349,7 @@ static void CoolingControl(void)
     if(PODOGREV == 0)
     {
         CoolingDown();
+        Cooling();
         return;
     }
 
@@ -395,7 +397,7 @@ static void CoolingControl(void)
             if (temp_bf <= 30) {
                 CoolingDown();
             }
-            else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(cooling_level, 100), COOLING_SIGNAL_PERIOD_10MICROSEC)){
+            else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(cooling_level + 5, 100), COOLING_SIGNAL_PERIOD_10MICROSEC)){
                 CoolingUp();
             }
             else {
