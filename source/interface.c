@@ -7,6 +7,7 @@
 #include "params.h"
 
 #define UPD_TIME        (Uint16)(1000 / UPD_FREQ)
+
 #define UPD_TIME_10MICROSEC      5UL
 #define HEATING_SIGNAL_PERIOD    100UL //60000UL = 1 min
 
