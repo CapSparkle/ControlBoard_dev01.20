@@ -2,9 +2,7 @@
 #include "config.h"
 
 #define SYS_PERIOD_MS (Uint32)(SYSCLK / 1000)
-#define SYS_PERIOD_10MICROS (Uint32)(SYSCLK / 100000)
 Uint32 system_time = 0; //millisecs
-Uint32 system_time_10micros = 0; //10 microsec tics
 
 static void InitUserGpio(void);
 static void InitUserAdc(void);
@@ -78,8 +76,27 @@ static void InitUserGpio(void)
     GpioCtrlRegs.GPBDIR.bit.GPIO34 = 1;   // DSP_LED
     GpioDataRegs.GPBDAT.bit.GPIO34 = 0;
 
-    GpioCtrlRegs.GPADIR.bit.GPIO18 = 1;   // OHLAZHDENIE
-    GpioDataRegs.GPADAT.bit.GPIO18 = 1;
+    // OHLAZHDENIE
+    // EPWM
+    GpioCtrlRegs.GPAMUX1.bit.GPIO3 = 1;
+    GpioCtrlRegs.GPAPUD.bit.GPIO3 = 1;
+    EPwm2Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
+    EPwm2Regs.TBCTL.bit.PHSEN = TB_DISABLE; // Phase loading disabled
+    EPwm2Regs.TBCTL.bit.PRDLD = TB_SHADOW;
+    EPwm2Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_DISABLE;
+    EPwm2Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1; // TBCLK = SYSCLKOUT
+    EPwm2Regs.TBCTL.bit.CLKDIV = TB_DIV1;
+
+    EPwm2Regs.TBPRD = SYSCLK / 1000; // Tpwm (Period) = 1ms
+
+    EPwm2Regs.CMPB = EPwm2Regs.TBPRD / 2;
+
+    EPwm2Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
+    EPwm2Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO;
+    EPwm2Regs.AQCTLB.bit.CAU = AQ_CLEAR;
+    EPwm2Regs.AQCTLB.bit.PRD = AQ_SET;
+
+
 
 	EDIS;
 }
@@ -125,13 +142,11 @@ void SystemTickUpdate(void)
 {
     static Uint32 lastTime = -1UL;
     Uint32 delta = lastTime - ReadCpuTimer0Counter();
-    if (delta >= SYS_PERIOD_10MICROS)
+    if (delta >= SYS_PERIOD_MS)
     {
-        delta = _IQ1div(delta, SYS_PERIOD_10MICROS) >> 1;
-        system_time_10micros += delta;
-        lastTime -= delta * SYS_PERIOD_10MICROS;
-
-        system_time = system_time_10micros / 100;
+        delta = _IQ1div(delta, SYS_PERIOD_MS) >> 1;
+        system_time += delta;
+        lastTime -= delta * SYS_PERIOD_MS;
     }
 }
 

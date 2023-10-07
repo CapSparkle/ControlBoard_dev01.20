@@ -22,7 +22,9 @@
 #define SCI_RESOUT          GpioDataRegs.GPADAT.bit.GPIO19
 #define DSP_LED             GpioDataRegs.GPBDAT.bit.GPIO34
 
-#define OHLAZHDENIE         GpioDataRegs.GPADAT.bit.GPIO16
+#define COOLING_PULSE_DUTY_TERMINATOR   EPwm2Regs.CMPB
+#define COOLING_PULSE_NUMBER            EPwm2Regs.TBPRD
+
 
 #define TEMP_CPU            AdcResult.ADCRESULT1
 #define TEMP_BF             AdcResult.ADCRESULT2

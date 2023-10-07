@@ -7,11 +7,10 @@
 #include "params.h"
 
 #define UPD_TIME        (Uint16)(1000 / UPD_FREQ)
-#define UPD_TIME_10MICROSEC      5UL
-#define HEATING_SIGNAL_PERIOD    100UL //60000UL = 1 min
+#define HEATING_SIGNAL_PERIOD   100UL       //60000UL = 1 min
 
-#define COOLING_SIGNAL_PERIOD_10MICROSEC    100000000UL // 1UL = 10 microsecs; 100'000UL = 1'000'000 microsecs = 1 sec
-#define COOLING_DUTY_STEP_PERIOD            100UL
+#define COOLING_STEP_PERIOD     250UL       //250 millisecs
+#define COOLING_MACRO_PERIOD    100000UL    //100 sec
 
 Uint16 dev_number = 0;
 Uint16 wr_flag = 0;
@@ -32,15 +31,21 @@ Uint16 din_states = 0;
 Uint16 upd_freq = 50;
 int32  adc_tf = 0;
 
+
+// === Cooling ===
 int16  cool_on = 50;
 int16  cool_off = 30;
 Uint16 cooling = 1;
-Uint16 cooling_mode = 0;
+Uint16 cooling_mode = 1;
 Uint16 cooling_level = 0;
 
-Uint32 cooling_timer_10microsec = 0;
+Uint32 cooling_step_timer = 0;
+Uint32 cooling_macro_timer = 0;
 
-Uint16 current_cooling_power = 0;
+Uint32 dutyChangeStep = 0;
+
+bool compute_macro_periods = false;
+// ===============
 
 
 int32 temp_bf_delta = 0; //_IQ16(1);
@@ -63,12 +68,16 @@ static void ReadParams(void);
 static void WriteParams(void);
 static void LedBlink(Uint16 TimeMs);
 static void TempTimer(Uint16 TimeMs);
-static void TempTimer10Microsec(Uint16 tenMicrosec);
 static void TempControl(void);
 static void AdcInterp(adc_value_t *v, int32 x, Uint16 numPts);
 static void UpdateSensors(void);
 static void AdcFiltrate(void);
 extern void InitHeatGpio(void);
+
+static void CoolingControl(void);
+static void ChangeCoolingSignalDuty(bool increase);
+static void CoolingUp(void);
+static void CoolingDown(void);
 
 
 void InterfaceInit(void)
@@ -107,13 +116,14 @@ void InterfaceInit(void)
         adc_f[i].dt = _IQ(1.0/UPD_FREQ);
 
     ReadParams();
+
+    dutyChangeStep = COOLING_PULSE_NUMBER / 20;
 }
 
 void InterfaceUpdate(void)
 {
     static Uint16 i2c_index = 0;
     static Uint32 timer = 0;
-    static Uint32 timer_10microsec = 0;
 
     WriteParams();
     I2C_update(&I2cMsg);
@@ -140,10 +150,19 @@ void InterfaceUpdate(void)
         timer += UPD_TIME;
     }
 
-    if((system_time_10micros - timer_10microsec) > UPD_TIME_10MICROSEC)
+    if((system_time - cooling_step_timer) >= COOLING_STEP_PERIOD)
     {
-       TempTimer10Microsec(UPD_TIME_10MICROSEC);
-       timer_10microsec += UPD_TIME_10MICROSEC;
+       cooling_step_timer += COOLING_STEP_PERIOD;
+       cooling_macro_timer += COOLING_STEP_PERIOD;
+
+       if(compute_macro_periods && (cooling_macro_timer >= COOLING_MACRO_PERIOD))
+       {
+           cooling_macro_timer -= COOLING_MACRO_PERIOD;
+       }
+       else
+       {
+           cooling_macro_timer = 0;
+       }
 
        CoolingControl();
     }
@@ -238,12 +257,6 @@ static void TempTimer(Uint16 TimeMs)
 {
     heating_timer += TimeMs;
     if (heating_timer > HEATING_SIGNAL_PERIOD) heating_timer -= HEATING_SIGNAL_PERIOD;
-}
-
-static void TempTimer10Microsec(Uint16 tenMicrosec)
-{
-    cooling_timer_10microsec += tenMicrosec;
-    if (cooling_timer_10microsec > COOLING_SIGNAL_PERIOD_10MICROSEC) cooling_timer_10microsec -= COOLING_SIGNAL_PERIOD_10MICROSEC;
 }
 
 static void TempControl(void)
@@ -344,12 +357,39 @@ static void TempControl(void)
     }
 }
 
+static void ChangeCoolingSignalDuty(bool increase){
+
+    if(increase)
+    {
+        if(COOLING_PULSE_DUTY_TERMINATOR < COOLING_PULSE_NUMBER)
+        {
+            COOLING_PULSE_DUTY_TERMINATOR += dutyChangeStep;
+
+            if(COOLING_PULSE_DUTY_TERMINATOR > COOLING_PULSE_NUMBER)
+            {
+                COOLING_PULSE_DUTY_TERMINATOR = COOLING_PULSE_NUMBER;
+            }
+        }
+    }
+    else
+    {
+        if(COOLING_PULSE_DUTY_TERMINATOR > 0)
+        {
+            COOLING_PULSE_DUTY_TERMINATOR -= dutyChangeStep;
+
+            if(COOLING_PULSE_DUTY_TERMINATOR > COOLING_PULSE_NUMBER)
+            {
+                COOLING_PULSE_DUTY_TERMINATOR = 0;
+            }
+        }
+    }
+}
+
 static void CoolingControl(void)
 {
     if(PODOGREV == 0)
     {
         CoolingDown();
-        Cooling();
         return;
     }
 
@@ -388,16 +428,19 @@ static void CoolingControl(void)
             if (temp_bf >= cool_on) {
                 CoolingUp();
             }
-            if (temp_bf <= cool_off) {
+            if (temp_bf <= cool_off){
                 CoolingDown();
             }
         }
         else
         {
+
             if (temp_bf <= 30) {
+                compute_macro_periods = false;
                 CoolingDown();
             }
-            else if (cooling_timer_10microsec <= _IQmpy(_IQdiv(cooling_level + 5, 100), COOLING_SIGNAL_PERIOD_10MICROSEC)){
+            else if (cooling_macro_timer <= _IQmpy(_IQdiv(cooling_level + 5, 100), COOLING_MACRO_PERIOD)){
+                compute_macro_periods = true;
                 CoolingUp();
             }
             else {
@@ -405,40 +448,14 @@ static void CoolingControl(void)
             }
         }
     }
-
-    Cooling();
-}
-
-
-
-/*
- int16  cool_on = 50;
-int16  cool_off = 30;
-Uint16 cooling = 1;
-Uint16 cooling_mode = 0;
-Uint16 cooling_level = 0;
-
-Uint32 cooling_timer_10microsec = 0;
-
-Uint16 current_cooling_power = 0;
- */
-
-static void Cooling(){
-    auto small_period_value = cooling_timer_10microsec % COOLING_DUTY_STEP_PERIOD;
-    if(small_period_value <= _IQmpy(_IQdiv(current_cooling_power, 100), COOLING_DUTY_STEP_PERIOD)) OHLAZHDENIE = 0;
-    else OHLAZHDENIE = 1;
 }
 
 static void CoolingUp(){
-    if(current_cooling_power < 100){
-        current_cooling_power += 5;
-    }
+    ChangeCoolingSignalDuty(true);
 }
 
 static void CoolingDown(){
-    if(current_cooling_power > 0){
-        current_cooling_power -= 5;
-    }
+    ChangeCoolingSignalDuty(false);
 }
 
 static void AdcInterp(adc_value_t *v, int32 x, Uint16 numPts)

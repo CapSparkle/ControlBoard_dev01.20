@@ -39,7 +39,15 @@ extern int16  cool_off;
 extern Uint16 cooling;
 extern Uint16 cooling_mode;
 extern Uint16 cooling_level;
+
 extern int32 temp_bf_delta;
+
+extern Uint32 cooling_step_timer;
+extern Uint32 cooling_macro_timer;
+
+extern Uint32 dutyChangeStep;
+
+extern bool compute_macro_periods;
 
 void InterfaceInit(void);
 void InterfaceUpdate(void);
