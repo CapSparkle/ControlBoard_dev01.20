@@ -1,6 +1,7 @@
 
 #include "config.h"
 
+
 #define SYS_PERIOD_MS (Uint32)(SYSCLK / 1000)
 Uint32 system_time = 0; //millisecs
 
@@ -78,23 +79,24 @@ static void InitUserGpio(void)
 
     // OHLAZHDENIE
     // EPWM
-    GpioCtrlRegs.GPAMUX1.bit.GPIO3 = 1;
-    GpioCtrlRegs.GPAPUD.bit.GPIO3 = 1;
-    EPwm2Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
-    EPwm2Regs.TBCTL.bit.PHSEN = TB_DISABLE; // Phase loading disabled
-    EPwm2Regs.TBCTL.bit.PRDLD = TB_SHADOW;
-    EPwm2Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_DISABLE;
-    EPwm2Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1; // TBCLK = SYSCLKOUT
-    EPwm2Regs.TBCTL.bit.CLKDIV = TB_DIV1;
+    GpioCtrlRegs.GPAMUX1.bit.GPIO4 = 1;
+    GpioCtrlRegs.GPAPUD.bit.GPIO4 = 1;
+    EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
+    EPwm3Regs.TBCTL.bit.PHSEN = TB_DISABLE; // Phase loading disabled
+    EPwm3Regs.TBCTL.bit.PRDLD = TB_SHADOW;
+    EPwm3Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_DISABLE;
+    EPwm3Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1; // TBCLK = SYSCLKOUT
+    EPwm3Regs.TBCTL.bit.CLKDIV = TB_DIV1;
 
-    EPwm2Regs.TBPRD = SYSCLK / 1000; // Tpwm (Period) = 1ms
+    EPwm3Regs.TBPRD = 20000; // SYSCLK; //assuming we have 90'000'000 Hz SYSCLK
 
-    EPwm2Regs.CMPB = EPwm2Regs.TBPRD / 2;
+    EPwm3Regs.CMPB = EPwm3Regs.TBPRD / 2;
 
-    EPwm2Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
-    EPwm2Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO;
-    EPwm2Regs.AQCTLB.bit.CAU = AQ_CLEAR;
-    EPwm2Regs.AQCTLB.bit.PRD = AQ_SET;
+
+    EPwm3Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
+    EPwm3Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO;
+    EPwm3Regs.AQCTLB.bit.CAU = AQ_CLEAR;
+    EPwm3Regs.AQCTLB.bit.PRD = AQ_SET;
 
 
 

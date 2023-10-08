@@ -45,6 +45,7 @@ Uint32 cooling_macro_timer = 0;
 Uint32 dutyChangeStep = 0;
 
 bool compute_macro_periods = false;
+bool smoothTransition = false;
 // ===============
 
 
@@ -117,7 +118,15 @@ void InterfaceInit(void)
 
     ReadParams();
 
-    dutyChangeStep = COOLING_PULSE_NUMBER / 20;
+    if(smoothTransition){
+        dutyChangeStep = COOLING_PULSE_NUMBER / 20;
+    }
+    else
+    {
+        dutyChangeStep = COOLING_PULSE_NUMBER;
+    }
+
+
 }
 
 void InterfaceUpdate(void)
@@ -383,6 +392,8 @@ static void ChangeCoolingSignalDuty(bool increase){
             }
         }
     }
+
+    COOLING_PULSE_DUTY_TERMINATOR = COOLING_PULSE_NUMBER / 2;
 }
 
 static void CoolingControl(void)
