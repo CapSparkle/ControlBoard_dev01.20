@@ -25,7 +25,7 @@
 #define COOLING_PULSE_DUTY_TERMINATOR   EPwm3Regs.CMPB
 #define COOLING_PULSE_NUMBER            EPwm3Regs.TBPRD
 
-#define COOLING_SIGNAL_OUTPUT           GpioDataRegs.GPADAT.bit.GPIO4;
+#define COOLING_SIGNAL_OUTPUT           EPwm3Regs.TBCTR;
 
 
 #define TEMP_CPU            AdcResult.ADCRESULT1

@@ -85,20 +85,19 @@ static void InitUserGpio(void)
     EPwm3Regs.TBCTL.bit.PHSEN = TB_DISABLE; // Phase loading disabled
     EPwm3Regs.TBCTL.bit.PRDLD = TB_SHADOW;
     EPwm3Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_DISABLE;
-    EPwm3Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1; // TBCLK = SYSCLKOUT
-    EPwm3Regs.TBCTL.bit.CLKDIV = TB_DIV1;
+    EPwm3Regs.TBCTL.bit.HSPCLKDIV = 7;
+    EPwm3Regs.TBCTL.bit.CLKDIV = 7;
+    //TBCLK = SYSCLK / (HSPCLKDIV * CLKDIV) = 50223 (which is roughlt 50 KHz)
+    //...if assuming we have 90'000'000 Hz SYSCLK
 
-    EPwm3Regs.TBPRD = 20000; // SYSCLK; //assuming we have 90'000'000 Hz SYSCLK
+    EPwm3Regs.TBPRD = 50; //50223 / 1000 = 50;
 
     EPwm3Regs.CMPB = EPwm3Regs.TBPRD / 2;
-
 
     EPwm3Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
     EPwm3Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO;
     EPwm3Regs.AQCTLB.bit.CAU = AQ_CLEAR;
     EPwm3Regs.AQCTLB.bit.PRD = AQ_SET;
-
-
 
 	EDIS;
 }

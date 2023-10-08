@@ -164,13 +164,14 @@ void InterfaceUpdate(void)
        cooling_step_timer += COOLING_STEP_PERIOD;
        cooling_macro_timer += COOLING_STEP_PERIOD;
 
-       if(compute_macro_periods && (cooling_macro_timer >= COOLING_MACRO_PERIOD))
-       {
-           cooling_macro_timer -= COOLING_MACRO_PERIOD;
-       }
-       else
+
+       if(!compute_macro_periods)
        {
            cooling_macro_timer = 0;
+       }
+       else if(cooling_macro_timer >= COOLING_MACRO_PERIOD)
+       {
+           cooling_macro_timer -= COOLING_MACRO_PERIOD;
        }
 
        CoolingControl();
@@ -347,7 +348,7 @@ static void TempControl(void)
             if (!heating) PODOGREV = 1;
             else if (!heating_mode)
             {
-                if (temp_bf <= temp_on)  PODOGREV = 0;
+                if (false /*temp_bf <= temp_on*/)  PODOGREV = 0;
                 if (temp_bf >= temp_off) PODOGREV = 1;
             }
             else
@@ -434,7 +435,7 @@ static void CoolingControl(void)
         if (!cooling){
             CoolingDown();
         }
-        else if (!cooling_mode)
+        else if (false/*!cooling_mode*/)
         {
             if (temp_bf >= cool_on) {
                 CoolingUp();
@@ -446,11 +447,11 @@ static void CoolingControl(void)
         else
         {
 
-            if (temp_bf <= 30) {
+            if (false/*temp_bf <= 30*/) {
                 compute_macro_periods = false;
                 CoolingDown();
             }
-            else if (cooling_macro_timer <= _IQmpy(_IQdiv(cooling_level + 5, 100), COOLING_MACRO_PERIOD)){
+            else if (cooling_macro_timer <= _IQmpy(_IQdiv(98/*cooling_level + 5*/, 100), COOLING_MACRO_PERIOD)){
                 compute_macro_periods = true;
                 CoolingUp();
             }
