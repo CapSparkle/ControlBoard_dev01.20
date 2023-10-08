@@ -3,7 +3,9 @@
 
 
 #define SYS_PERIOD_MS (Uint32)(SYSCLK / 1000)
+#define SYS_20KH_TICK_PERIOD (Uint32)(SYSCLK / 20000)
 Uint32 system_time = 0; //millisecs
+Uint32 system_20KHZ_tics_time = 0;
 
 static void InitUserGpio(void);
 static void InitUserAdc(void);
@@ -144,11 +146,13 @@ void SystemTickUpdate(void)
 {
     static Uint32 lastTime = -1UL;
     Uint32 delta = lastTime - ReadCpuTimer0Counter();
-    if (delta >= SYS_PERIOD_MS)
+    if (delta >= SYS_20KH_TICK_PERIOD)
     {
-        delta = _IQ1div(delta, SYS_PERIOD_MS) >> 1;
-        system_time += delta;
-        lastTime -= delta * SYS_PERIOD_MS;
+        delta = _IQ1div(delta, SYS_20KH_TICK_PERIOD) >> 1;
+        system_20KHZ_tics_time += delta;
+        lastTime -= delta * SYS_20KH_TICK_PERIOD;
+
+        system_time = system_20KHZ_tics_time / 20;
     }
 }
 
