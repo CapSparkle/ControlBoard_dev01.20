@@ -80,7 +80,8 @@ static void InitUserGpio(void)
     // OHLAZHDENIE
     // EPWM
     GpioCtrlRegs.GPAMUX1.bit.GPIO4 = 1;
-    GpioCtrlRegs.GPAPUD.bit.GPIO4 = 1;
+    //GpioCtrlRegs.GPAPUD.bit.GPIO4 = 1;
+    GpioCtrlRegs.GPADIR.bit.GPIO4 = 1;
     EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
     EPwm3Regs.TBCTL.bit.PHSEN = TB_DISABLE; // Phase loading disabled
     EPwm3Regs.TBCTL.bit.PRDLD = TB_SHADOW;
@@ -92,12 +93,12 @@ static void InitUserGpio(void)
 
     EPwm3Regs.TBPRD = 50; //50223 / 1000 = 50;
 
-    EPwm3Regs.CMPB = EPwm3Regs.TBPRD / 2;
+    EPwm3Regs.CMPA.half.CMPA = EPwm3Regs.TBPRD / 2;
 
-    EPwm3Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;
-    EPwm3Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO;
-    EPwm3Regs.AQCTLB.bit.CAU = AQ_CLEAR;
-    EPwm3Regs.AQCTLB.bit.PRD = AQ_SET;
+    EPwm3Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;
+    EPwm3Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO;
+    EPwm3Regs.AQCTLA.bit.CAU = AQ_CLEAR;
+    EPwm3Regs.AQCTLA.bit.PRD = AQ_SET;
 
 	EDIS;
 }
