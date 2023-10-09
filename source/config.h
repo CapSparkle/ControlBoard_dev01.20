@@ -22,10 +22,10 @@
 #define SCI_RESOUT          GpioDataRegs.GPADAT.bit.GPIO19
 #define DSP_LED             GpioDataRegs.GPBDAT.bit.GPIO34
 
-#define COOLING_PULSE_DUTY_TERMINATOR   EPwm3Regs.CMPA
+#define COOLING_PULSE_DUTY_TERMINATOR   EPwm3Regs.CMPA.half.CMPA
 #define COOLING_PULSE_NUMBER            EPwm3Regs.TBPRD
 
-#define COOLING_SIGNAL_OUTPUT           EPwm3Regs.TBCTR;
+#define COOLING_SIGNAL_OUTPUT           EPwm3Regs.TBCTR
 
 
 #define TEMP_CPU            AdcResult.ADCRESULT1
