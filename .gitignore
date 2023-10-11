@@ -39,3 +39,16 @@ ccs/Debug/ControlBoard.map
 ccs/Debug/ControlBoard.map
 ccs/Debug/ControlBoard.out
 ccs/Debug/ControlBoard_linkInfo.xml
+ccs/Debug/ccsObjs.opt
+ccs/Debug/ControlBoard.map
+ccs/Debug/ControlBoard.out
+ccs/Debug/ControlBoard_linkInfo.xml
+ccs/Debug/drivers/subdir_vars.mk
+ccs/Debug/f2802x_common/subdir_vars.mk
+ccs/Debug/f2802x_headers/subdir_vars.mk
+ccs/Debug/makefile
+ccs/Debug/source/interface.d
+ccs/Debug/source/interface.obj
+ccs/Debug/source/subdir_vars.mk
+ccs/Debug/source/system_init.d
+ccs/Debug/source/system_init.obj

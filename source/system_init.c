@@ -80,20 +80,27 @@ static void InitUserGpio(void)
     // OHLAZHDENIE
     // EPWM
     GpioCtrlRegs.GPAMUX1.bit.GPIO4 = 1;
-    //GpioCtrlRegs.GPAPUD.bit.GPIO4 = 1;
     GpioCtrlRegs.GPADIR.bit.GPIO4 = 1;
-    EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
     EPwm3Regs.TBCTL.bit.PHSEN = TB_DISABLE; // Phase loading disabled
     EPwm3Regs.TBCTL.bit.PRDLD = TB_SHADOW;
     EPwm3Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_DISABLE;
-    EPwm3Regs.TBCTL.bit.HSPCLKDIV = 7;
-    EPwm3Regs.TBCTL.bit.CLKDIV = 7;
-    //TBCLK = SYSCLK / (HSPCLKDIV * CLKDIV) = 50223 (which is roughlt 50 KHz)
-    //...if assuming we have 90'000'000 Hz SYSCLK
+    EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
 
-    EPwm3Regs.TBPRD = 50; //50223 / 1000 = 50;
+    // ==== 1.004 KHz setup ====
+    EPwm3Regs.TBCTL.bit.HSPCLKDIV = 7;  // 14
+    EPwm3Regs.TBCTL.bit.CLKDIV = 7;     // 128
+    EPwm3Regs.TBPRD = 49;
+    // 90'000'000 / 1'792 = 50'223
+    // 50'223 / (49 + 1) = 1'004
 
-    EPwm3Regs.CMPA.half.CMPA = EPwm3Regs.TBPRD / 2;
+    // ==== 60 KHz setup ====
+    //EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
+    //EPwm3Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1;   // 1
+    //EPwm3Regs.TBCTL.bit.CLKDIV = TB_DIV1;      //1
+    //EPwm3Regs.TBPRD = 1499;
+    // 90'000'000 / (1'499 + 1) = 60'000
+
+    EPwm3Regs.CMPA.half.CMPA = 0;
 
     EPwm3Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;
     EPwm3Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO;

@@ -393,6 +393,8 @@ static void ChangeCoolingSignalDuty(bool increase){
             }
         }
     }
+
+    //COOLING_PULSE_DUTY_TERMINATOR = COOLING_PULSE_NUMBER / 2;
 }
 
 static void CoolingControl(void)
