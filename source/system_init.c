@@ -1,7 +1,6 @@
 
 #include "config.h"
 
-
 #define SYS_PERIOD_MS (Uint32)(SYSCLK / 1000)
 Uint32 system_time = 0; //millisecs
 
@@ -86,6 +85,8 @@ static void InitUserGpio(void)
     EPwm3Regs.TBCTL.bit.SYNCOSEL = TB_SYNC_DISABLE;
     EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
 
+
+// ===== this is for 90'000'000 SYSCLK =======
     // ==== 1.004 KHz setup ====
     EPwm3Regs.TBCTL.bit.HSPCLKDIV = 7;  // 14
     EPwm3Regs.TBCTL.bit.CLKDIV = 7;     // 128
@@ -99,6 +100,7 @@ static void InitUserGpio(void)
     //EPwm3Regs.TBCTL.bit.CLKDIV = TB_DIV1;      //1
     //EPwm3Regs.TBPRD = 1499;
     // 90'000'000 / (1'499 + 1) = 60'000
+// ===========================================
 
     EPwm3Regs.CMPA.half.CMPA = 0;
 

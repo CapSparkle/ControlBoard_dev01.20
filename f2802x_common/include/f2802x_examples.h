@@ -45,7 +45,7 @@ extern "C" {
       Specify the PLL control register (PLLCR) and divide select (DIVSEL) value.
 -----------------------------------------------------------------------------*/
 #ifndef DSP28_DIVFACTOR
-#define DSP28_DIVFACTOR     2
+#define DSP28_DIVFACTOR     1
 #endif
 
 #if (DSP28_DIVFACTOR == 4)
