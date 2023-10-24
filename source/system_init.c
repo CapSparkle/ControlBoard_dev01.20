@@ -88,11 +88,27 @@ static void InitUserGpio(void)
 
 // ===== this is for 90'000'000 SYSCLK =======
     // ==== 1.004 KHz setup ====
-    EPwm3Regs.TBCTL.bit.HSPCLKDIV = 7;  // 14
-    EPwm3Regs.TBCTL.bit.CLKDIV = 7;     // 128
-    EPwm3Regs.TBPRD = 49;
+    //EPwm3Regs.TBCTL.bit.HSPCLKDIV = 7;  // 14
+    //EPwm3Regs.TBCTL.bit.CLKDIV = 7;     // 128
+    //EPwm3Regs.TBPRD = 49;
     // 90'000'000 / 1'792 = 50'223
     // 50'223 / (49 + 1) = 1'004
+
+    // ==== 60 KHz setup ====
+    //EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
+    //EPwm3Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1;   // 1
+    //EPwm3Regs.TBCTL.bit.CLKDIV = TB_DIV1;      //1
+    //EPwm3Regs.TBPRD = 1499;
+    // 90'000'000 / (1'499 + 1) = 60'000
+// ===========================================
+
+// ===== this is for 15'000'000 SYSCLK =======
+    // ==== 1.027 KHz setup ====
+    EPwm3Regs.TBCTL.bit.HSPCLKDIV = 1;  // 2
+    EPwm3Regs.TBCTL.bit.CLKDIV = 7;     // 128
+    EPwm3Regs.TBPRD = 56;
+    // 15'000'000 / (2 * 128) = 58'593
+    // 58'593 / (56 + 1) = 1'004
 
     // ==== 60 KHz setup ====
     //EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
