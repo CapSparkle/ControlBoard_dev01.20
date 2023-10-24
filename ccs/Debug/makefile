@@ -165,7 +165,7 @@ all: ControlBoard.out
 ControlBoard.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/bin/cl2000" -v28 -ml -mt -Ooff --advice:performance=all --define=SYSCLK=30000000 --define=CLKIN=30000000 --define=UPD_FREQ=250 --define=RS_SPEED=115200 --define=LARGE_MODEL --define=FLASH_PROJ -g --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --verbose_diagnostics --gen_func_subsections=on --abi=coffabi -z -m"ControlBoard.map" --heap_size=0x0 --stack_size=0x3B0 --warn_sections -i"C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/lib" -i"C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include" -i"../../lib" --reread_libs --diag_suppress=16002 --diag_wrap=off --display_error_number --xml_link_info="ControlBoard_linkInfo.xml" --rom_model -o "ControlBoard.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/bin/cl2000" -v28 -ml -mt -Ooff --advice:performance=all --define=SYSCLK=15000000 --define=CLKIN=30000000 --define=UPD_FREQ=250 --define=RS_SPEED=115200 --define=LARGE_MODEL --define=FLASH_PROJ -g --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --verbose_diagnostics --gen_func_subsections=on --abi=coffabi -z -m"ControlBoard.map" --heap_size=0x0 --stack_size=0x3B0 --warn_sections -i"C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/lib" -i"C:/ti/ccs1240/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include" -i"../../lib" --reread_libs --diag_suppress=16002 --diag_wrap=off --display_error_number --xml_link_info="ControlBoard_linkInfo.xml" --rom_model -o "ControlBoard.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

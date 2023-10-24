@@ -45,7 +45,7 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.ADVICE__PERFORMANCE.347238657" name="Provide advice on optimization techniques (--advice:performance)" superClass="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.ADVICE__PERFORMANCE" value="--advice:performance=all" valueType="string"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.DEFINE.1697964757" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.DEFINE" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="SYSCLK=30000000"/>
+									<listOptionValue builtIn="false" value="SYSCLK=15000000"/>
 									<listOptionValue builtIn="false" value="CLKIN=30000000"/>
 									<listOptionValue builtIn="false" value="UPD_FREQ=250"/>
 									<listOptionValue builtIn="false" value="RS_SPEED=115200"/>
