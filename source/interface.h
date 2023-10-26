@@ -45,6 +45,8 @@ extern int32 temp_bf_delta;
 extern Uint32 cooling_step_timer;
 extern Uint32 cooling_macro_timer;
 
+extern bool smooth_cooling;
+
 extern Uint32 dutyChangeStep;
 
 void InterfaceInit(void);

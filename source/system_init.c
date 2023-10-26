@@ -95,7 +95,6 @@ static void InitUserGpio(void)
     // 50'223 / (49 + 1) = 1'004
 
     // ==== 60 KHz setup ====
-    //EPwm3Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;
     //EPwm3Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1;   // 1
     //EPwm3Regs.TBCTL.bit.CLKDIV = TB_DIV1;      //1
     //EPwm3Regs.TBPRD = 1499;

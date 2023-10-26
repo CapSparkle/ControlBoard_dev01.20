@@ -12,8 +12,6 @@
 #define COOLING_STEP_PERIOD     250UL       //250 millisecs
 #define COOLING_MACRO_PERIOD    100000UL    //100 sec
 
-#define smoothTransition = 0;
-
 Uint16 dev_number = 0;
 Uint16 wr_flag = 0;
 int16  spi_enable = 1;
@@ -43,6 +41,8 @@ Uint16 cooling_level = 0;
 
 Uint32 cooling_step_timer = 0;
 Uint32 cooling_macro_timer = 0;
+
+bool smooth_cooling = false;
 
 Uint32 dutyChangeStep = 0;
 // ===============
@@ -117,7 +117,9 @@ void InterfaceInit(void)
 
     ReadParams();
 
-    if(smoothTransition){
+
+    if (smooth_cooling)
+    {
         dutyChangeStep = COOLING_PULSE_NUMBER / 20;
     }
     else
@@ -441,10 +443,11 @@ static void CoolingControl(void)
         }
         else
         {
-            if (temp_bf <= 26) {
-                CoolingDown();
-            }
-            else if (cooling_macro_timer <= _IQmpy(_IQdiv(cooling_level + 5, 100), COOLING_MACRO_PERIOD)){
+            //if (temp_bf <= 26) {
+            //    CoolingDown();
+            //}
+
+            if (cooling_macro_timer <= _IQmpy(_IQdiv(cooling_level + 5 * smooth_cooling, 100), COOLING_MACRO_PERIOD)){
                 CoolingUp();
             }
             else {
