@@ -47,9 +47,6 @@ extern Uint32 cooling_macro_timer;
 
 extern Uint32 dutyChangeStep;
 
-extern bool compute_macro_periods;
-extern bool smoothTransition;
-
 void InterfaceInit(void);
 void InterfaceUpdate(void);
 
