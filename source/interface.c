@@ -33,8 +33,8 @@ int32  adc_tf = 0;
 
 
 // === Cooling ===
-int16  cool_on = 50;
-int16  cool_off = 30;
+int16  cool_on = 28;
+int16  cool_off = 25;
 Uint16 cooling = 1;
 Uint16 cooling_mode = 1;
 Uint16 cooling_level = 0;
@@ -432,25 +432,19 @@ static void CoolingControl(void)
         if (!cooling){
             CoolingDown();
         }
-        else if (!cooling_mode)
-        {
-            if (temp_bf >= cool_on) {
-                CoolingUp();
-            }
-            if (temp_bf <= cool_off){
-                CoolingDown();
-            }
-        }
         else
         {
-            //if (temp_bf <= 26) {
-            //    CoolingDown();
-            //}
-
-            if (cooling_macro_timer <= _IQmpy(_IQdiv(cooling_level + 5 * smooth_cooling, 100), COOLING_MACRO_PERIOD)){
-                CoolingUp();
+            if (cooling_mode || (temp_bf >= cool_on))
+            {
+                if (cooling_macro_timer <= _IQmpy(_IQdiv(cooling_level + 5 * smooth_cooling, 100), COOLING_MACRO_PERIOD)){
+                    CoolingUp();
+                }
+                else {
+                    CoolingDown();
+                }
             }
-            else {
+
+            if (temp_bf <= cool_off){
                 CoolingDown();
             }
         }

@@ -117,7 +117,14 @@ __interrupt void NetCommRxIsrHandler(void)
         data |= ((Uint32)rx_buf.data[5] << 8);
         data |= ((Uint32)rx_buf.data[4] << 0);
         error = (int16)WriteReg(addr, data);
-        if (!error) { len = 4; if (addr == 1) wr_flag = 1; }
+        if (!error)
+        {
+            len = 4;
+            if (addr == 1)
+            {
+                wr_flag = 1;
+            }
+        }
         break;
     default:
         error = -1;
