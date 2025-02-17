@@ -23,7 +23,7 @@
 "./source/interface.obj"
 "./source/main.obj"
 "./source/system_init.obj"
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/cmd/F28022_ControlBoard.cmd"
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_headers/cmd/F2802x_Headers_nonBIOS.cmd"
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/cmd/F28022_ControlBoard.cmd"
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_headers/cmd/F2802x_Headers_nonBIOS.cmd"
 -llibc.a
 -lIQmath.lib

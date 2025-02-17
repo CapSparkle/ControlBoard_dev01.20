@@ -6,13 +6,13 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/ads1256.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/adt75.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/drv_at24x.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/lir_da158a_02.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcomm.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcrc.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netwrapper.c 
+C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/ads1256.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/adt75.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/drv_at24x.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/lir_da158a_02.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/netcomm.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/netcrc.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/netwrapper.c 
 
 C_DEPS += \
 ./drivers/ads1256.d \
@@ -51,12 +51,12 @@ C_DEPS__QUOTED += \
 "drivers\netwrapper.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/ads1256.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/adt75.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/drv_at24x.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/lir_da158a_02.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcomm.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netcrc.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/drivers/netwrapper.c" 
+"C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/ads1256.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/adt75.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/drv_at24x.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/lir_da158a_02.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/netcomm.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/netcrc.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/drivers/netwrapper.c" 
 
 
