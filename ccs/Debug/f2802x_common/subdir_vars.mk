@@ -6,24 +6,24 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CMD_SRCS += \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/cmd/F28022_ControlBoard.cmd 
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/cmd/F28022_ControlBoard.cmd 
 
 ASM_SRCS += \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_codestartbranch.asm \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_usdelay.asm 
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_codestartbranch.asm \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_usdelay.asm 
 
 C_SRCS += \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_adc.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_cputimers.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_defaultisr.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_gpio.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_i2c.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_piectrl.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_sci.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_spi.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_sysctrl.c \
-C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_tempsensorconv.c 
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_adc.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_cputimers.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_defaultisr.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_gpio.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_i2c.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_piectrl.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_sci.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_spi.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_sysctrl.c \
+C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_tempsensorconv.c 
 
 C_DEPS += \
 ./f2802x_common/f2802x_adc.d \
@@ -90,20 +90,20 @@ ASM_DEPS__QUOTED += \
 "f2802x_common\f2802x_usdelay.d" 
 
 C_SRCS__QUOTED += \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_adc.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_cputimers.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_defaultisr.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_gpio.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_i2c.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_piectrl.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_sci.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_spi.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_sysctrl.c" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_tempsensorconv.c" 
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_adc.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_cputimers.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_defaultisr.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_gpio.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_i2c.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_piectrl.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_pievect.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_sci.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_spi.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_sysctrl.c" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_tempsensorconv.c" 
 
 ASM_SRCS__QUOTED += \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_codestartbranch.asm" \
-"C:/Users/Public/Desktop/ISS/ControlBoard_dev01.20/f2802x_common/source/f2802x_usdelay.asm" 
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_codestartbranch.asm" \
+"C:/Users/Fesko/source/ControlBoard_dev01.20/f2802x_common/source/f2802x_usdelay.asm" 
 
 
